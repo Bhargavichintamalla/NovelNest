@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>NovelNest</title>
+<style>
+
+.logo img{
+     width:190px;
+     height:45px;
+     transition:0.3s ease;
+}
+
+.logo img:hover{
+     opacity:0.8;
+     transform:translateY(-2px);
+}
+
+nav {
+    background-color: #ff9999;
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;  /* 🔥 change this */
+    padding: 0 10px;              /* reduced padding */
+    gap: 30px;                    /* controls spacing */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    gap: 10px;   /* 🔥 replaces big spacing */
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    transition:0.3s ease;
+}
+
+nav ul li a:hover{
+    color:white;
+    transform:translateY(-2px);
+}
+
+.name{
+    transition:0.3s ease;
+}
+
+.name:hover{
+    color:white;
+}
+
+.intro img {
+    width: 1500px;
+    height: auto;
+    object-fit: fit;
+    margin: 7px;
+    transition:0.3s ease;
+}
+.categ img{
+    float: left;
+    border: 2px;
+    margin: 5px;
+    width: 199px;
+    height: 240px;
+    transition:0.3s ease;
+}
+
+.categ img:hover{
+    transform:translateY(-8px);
+    box-shadow:0 8px 18px rgba(0,0,0,0.25);
+}
+
+.new img{
+    float: left;
+    border: 2px;
+    margin: 3px;
+    width: 280px;
+    height: 350px;
+    transition:0.3s ease;
+}
+
+.new img:hover{
+    opacity:0.95;
+    transform:scale(1.03);
+}
+
+.bookcat {
+    display: inline-block;
+}
+.search-box {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-left: 5px;   /* 🔥 was 15px */
+}
+
+.search-box input {
+    width: 180px;   /* 🔥 reduced size */
+    padding: 6px 10px;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    background: white;
+    font-size: 13px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.search-icon {
+    margin-left: -25px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.suggestions {
+    position: absolute;
+    top: 40px;
+    background: white;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    display: none;
+    z-index: 1000;
+}
+
+.suggestions div {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.suggestions div:hover {
+    background: #ffdddd;
+}
+.bookcat a {
+    display: block;
+    color: black;
+    text-decoration: none;
+    text-align:center;
+    font-size:20px;
+}
+
+.newbook{
+    display: inline-block;
+    text-align:center;
+    box-shadow: 0 5px 15px rgba(5, 5, 5, 0.2);
+    margin:2px;
+    transition:0.3s ease;
+}
+
+.newbook:hover{
+    transform:translateY(-8px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+.button{
+    padding: 10px;
+    background-color:black;
+    color:white;
+    font-size:18px;
+    text-decoration: none;
+    transition:0.3s ease;
+}
+
+.button:hover{
+    background-color:#e45858;
+    color:white;
+    transform:translateY(-3px);
+    box-shadow:0 5px 12px rgba(0,0,0,0.2);
+}
+
+.footer{
+    background-color:#ff9999;
+    transition:0.3s ease;
+}
+
+.footer:hover{
+    background-color:#ff8f8f;
+}
+
+.newbook .button{
+    display: inline-block;
+    margin-top: 12px;
+}
+
+.newbook h3,
+.newbook p{
+    margin: 5px 0;
+}
+#toast{
+    position: fixed;
+    top: 20px;
+    right: -300px;
+    background: white;
+    color: black;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: 0.4s ease;
+    font-weight: bold;
+    z-index: 9999;
+}
+
+#toast.show{
+    right: 20px;
+}
+.cart-img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    transition: 0.3s ease;
+}
+
+.cart-img:hover {
+    transform: translateY(-2px);
+    opacity: 0.8;
+}
+.right-nav {
+    display: flex;
+    align-items: center;
+}
+
+.right-nav ul {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.cart-img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    display: block;
+}
+.profile-img {
+    width: 30px;
+    height: 24px;
+    object-fit: contain;
+    transition: 0.3s ease;
+
+    /* blend with navbar */
+    background: transparent;
+    padding: 2px;
+    border-radius: 50%;
+}
+
+.profile-img:hover {
+    transform: translateY(-2px);
+    opacity: 0.8;
+}
+.footer{
+    background:#ff9999;
+    padding:15px 20px 0px;
+    color:black;
+    height: auto;
+    margin-top: 0;
+}
+.footer{
+    height:auto;      
+    margin-top:40px;
+}
+
+.footer-social{
+    margin:5px 0;
+}
+
+.footer-bottom{
+    padding-top:8px;
+    padding-bottom: 8px;
+}
+
+.footer-right{
+    gap:80px;
+}
+
+.footer-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:Center;
+    justify-content:flex-start;
+    gap:30px;
+    margin-top: auto;
+}
+
+/* LOGO */
+.footer-logo{
+    height:70px;
+    width:auto;
+    object-fit:contain;
+}
+
+/* ABOUT CENTER */
+.footer-about{
+    flex:0.9;
+    text-align:center;
+}
+
+.footer-about h2{
+    font-size:35px;
+    margin-bottom:3px;
+}
+
+.footer-about p{
+    font-size:18px;
+    line-height:1.5;
+    max-width:500px;
+    margin:auto;
+}
+
+/* RIGHT SIDE */
+.footer-right{
+    display:flex;
+    gap:150px;
+}
+
+.footer-links{
+    display:flex;
+    flex-direction:column;
+}
+
+.footer-links h3{
+    font-size:20px;
+    margin-bottom:5px;
+}
+
+.footer-links a{
+    text-decoration:none;
+    color:black;
+    font-size:18px;
+    margin:5px 0;
+    transition:0.3s ease;
+}
+
+.footer-links a:hover{
+    color:white;
+    transform:translateX(5px);
+}
+
+/* SOCIAL */
+.footer-social{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin:20px 0;
+}
+
+.footer-social img{
+    width:35px;
+    height:35px;
+    transition:0.3s ease;
+}
+
+.footer-social img:hover{
+    transform:scale(1.2);
+}
+
+/* BOTTOM */
+.footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    font-size:17px;
+    border-top:1px solid rgba(0,0,0,0.2);
+    padding-top:20px;
+}
+</style>
+</head>
+<div id="toast" class="toast"></div>
+
+<script>
+
+window.onload = function () {
+
+    let user = localStorage.getItem("loggedUser");
+
+    if (user) {
+        let toast = document.getElementById("toast");
+
+        toast.innerHTML = "👋 Hi " + user + "!!";
+        toast.classList.add("show");
+
+        setTimeout(function () {
+            toast.classList.remove("show");
+        }, 3000);
+
+        localStorage.removeItem("loggedUser");
+    }
+};
+
+
+/* ---------------- SEARCH DATA ---------------- */
+
+const categories = {
+    "fiction": {
+        keywords: ["fiction", "fantasy", "sci-fi", "science fiction", "novel"],
+        page: "NovelNest1.html"
+    },
+    "non-fiction": {
+        keywords: ["non fiction", "non-fiction", "history", "real", "biography books"],
+        page: "NovelNest2.html"
+    },
+    "love": {
+        keywords: ["love", "romance", "romantic"],
+        page: "NovelNest4.html"
+    },
+    "poetry": {
+        keywords: ["poetry", "poems"],
+        page: "NovelNest6.html"
+    },
+    "biography": {
+        keywords: ["biography", "autobiography"],
+        page: "NovelNest7.html"
+    },
+    "psychology": {
+        keywords: ["psychology", "mind", "behavior"],
+        page: "NovelNest3.html"
+    },
+    "health": {
+        keywords: ["health", "fitness", "wellness"],
+        page: "NovelNest5.html"
+    }
+};
+
+
+/* ---------------- DOM READY ---------------- */
+
+window.addEventListener("DOMContentLoaded", function () {
+
+    const suggestionBox = document.getElementById("suggestions");
+    const input = document.getElementById("searchInput");
+
+
+    /* -------- LIVE SUGGESTIONS -------- */
+
+    input.addEventListener("input", function () {
+
+        let value = input.value.toLowerCase().trim();
+        suggestionBox.innerHTML = "";
+
+        if (value === "") {
+            suggestionBox.style.display = "none";
+            return;
+        }
+
+        let found = false;
+
+        for (let key in categories) {
+
+            let match = categories[key].keywords.some(word =>
+                word.toLowerCase().includes(value)
+            );
+
+            if (match) {
+                let div = document.createElement("div");
+                div.innerText = key.charAt(0).toUpperCase() + key.slice(1);
+
+                div.onclick = function () {
+                    window.location.href = categories[key].page;
+                };
+
+                suggestionBox.appendChild(div);
+                found = true;
+            }
+        }
+
+        if (!found) {
+            let div = document.createElement("div");
+            div.innerText = "No Results Found";
+            suggestionBox.appendChild(div);
+        }
+
+        suggestionBox.style.display = "block";
+    });
+
+});
+
+
+/* ---------------- SEARCH BUTTON CLICK ---------------- */
+
+function searchCategory() {
+
+    let value = document.getElementById("searchInput").value.toLowerCase().trim();
+
+    for (let key in categories) {
+
+        let match = categories[key].keywords.some(word =>
+            word.toLowerCase().includes(value)
+        );
+
+        if (match) {
+            window.location.href = categories[key].page;
+            return;
+        }
+    }
+
+    alert("No Results Found");
+}
+
+
+/* ---------------- ADD TO CART ---------------- */
+
+function addToCart(name, author, price) {
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.push({
+        name: name,
+        author: author,
+        price: price
+    });
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert("Book added to cart! 🛒");
+}
+
+</script>
+<body>
+    <nav>
+
+  <div class="logo">
+    <img src="logo.png">
+  </div>
+
+  <!-- SEARCH BOX -->
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search books, categories...">
+    <span class="search-icon" onclick="searchCategory()">🔍</span>
+
+    <div id="suggestions" class="suggestions"></div>
+  </div>
+
+  <!-- NAV LINKS -->
+  <ul>
+    <li><a href="NovelNest.html"><h3 class="name">Home</h3></a></li>
+    <li><a href="NovelNest1.html"><h3 class="name">Fiction</h3></a></li>
+    <li><a href="NovelNest2.html"><h3 class="name">Non-Fiction</h3></a></li>
+    <li><a href="NovelNest4.html"><h3 class="name">Love</h3></a></li>
+    <li><a href="NovelNest6.html"><h3 class="name">Poetry</h3></a></li>
+    <li><a href="NovelNest7.html"><h3 class="name">Biography</h3></a></li>
+    <li><a href="NovelNest3.html"><h3 class="name">Psychology</h3></a></li>
+    <li><a href="NovelNest5.html"><h3 class="name">Health</h3></a></li>
+  </ul>
+
+  <!-- RIGHT SIDE -->
+  <div class="right-nav">
+    <ul>
+    <li>
+  <a href="signin.html">
+    <img src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" class="profile-img">
+  </a>
+</li>
+      <li>
+        <a href="add to cart.html">
+          <img src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png" class="cart-img">
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</nav>
+    <div class="intro">
+      <img src="https://revival-strapi.s3.eu-west-2.amazonaws.com/Copy_of_Top_10_Blog_Template_2024_02_09_T145106_322_fe53bb8593.png">
+    </div>
+    <div class="categ">
+      <h1>popular categories in Books</h1>
+      <div class="bookcat">
+        <a href="NovelNest1.html"><img src="Fantasy.png"></a>
+      </div>
+      <div class="bookcat">
+        <a href="NovelNest2.html"><img src="Fiction.png"></a>
+      </div>
+      <div class="bookcat">
+        <a href="NovelNest3.html"><img src="physicology.png"></a>
+      </div>
+      <div class="bookcat">
+        <a href="NovelNest4.html"><img src="Romance.png"></a>
+      </div>
+      <div class="bookcat">
+        <a href="NovelNest5.html"><img src="health.png"></a>
+      </div>
+      <div class="bookcat">
+        <a href="NovelNest6.html"><img src="Poetry.png"></a>
+      </div>
+      <div class="bookcat">
+        <a href="NovelNest7.html"><img src="biography.jpg"></a>
+      </div>
+    </div>
+    <div class="new">
+    <h1>New Arrivals This year</h1>
+
+<div class="newbook">
+    <img src="https://m.media-amazon.com/images/I/91H+bUrkLmL._AC_UF1000,1000_QL80_.jpg">
+    <h3>Rebel Witch</h3>
+    <p>Author: Kristen Ciccarelli</p>
+    <h3>₹436.00</h3>
+
+    <a href="#" class="button"
+    onclick="addToCart('Rebel Witch','Kristen Ciccarelli','436')">
+    🛒 Add to cart
+    </a>
+</div>
+
+<div class="newbook">
+    <img src="https://m.media-amazon.com/images/I/81LJk1Y1XDL._UF1000,1000_QL80_.jpg">
+    <h3>Watch Me</h3>
+    <p>Author: Tahereh Mafi</p>
+    <h3>₹319.00</h3>
+
+    <a href="#" class="button"
+    onclick="addToCart('Watch Me','Tahereh Mafi','319')">
+    🛒 Add to cart
+    </a>
+</div>
+
+<div class="newbook">
+    <img src="https://m.media-amazon.com/images/I/718u8haXM3L._AC_UF1000,1000_QL80_.jpg">
+    <h3>Modern Divination</h3>
+    <p>Author: Isabel Agajanian</p>
+    <h3>₹744.00</h3>
+
+    <a href="#" class="button"
+    onclick="addToCart('Modern Divination','Isabel Agajanian','744')">
+    🛒 Add to cart
+    </a>
+</div>
+
+<div class="newbook">
+    <img src="https://m.media-amazon.com/images/I/814WbJJINBL._UF1000,1000_QL80_.jpg">
+    <h3>Bury Our Bones in the Midnight Soil</h3>
+    <p>Author: V.E. Schwab</p>
+    <h3>₹849.00</h3>
+
+    <a href="#" class="button"
+    onclick="addToCart('Bury Our Bones in the Midnight Soil','V.E. Schwab','849')">
+    🛒 Add to cart
+    </a>
+</div>
+
+<div class="newbook">
+    <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1724773724i/211004190.jpg">
+    <h3>When The Moon Hits Your Eye</h3>
+    <p>Author: John Scalzi</p>
+    <h3>₹259.00</h3>
+
+    <a href="#" class="button"
+    onclick="addToCart('When The Moon Hits Your Eye','John Scalzi','259')">
+    🛒 Add to cart
+    </a>
+</div>
+
+<div class="newbook">
+    <img src="https://m.media-amazon.com/images/I/81dY-4XtCXL._UF1000,1000_QL80_.jpg">
+    <h3>Onyx Storm</h3>
+    <p>Author: Rebecca Yarros</p>
+    <h3>₹288.00</h3>
+
+    <a href="#" class="button"
+    onclick="addToCart('Onyx Storm','Rebecca Yarros','288')">
+    🛒 Add to cart
+    </a>
+</div>
+
+<div class="newbook">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo-wSEwjdWUubsBzsQ6CO_aGxRZ5v1N-QPww&s">
+    <h3>Jane Austen's Bookshelf</h3>
+    <p>Author: Rebecca Romney</p>
+    <h3>₹2236.00</h3>
+
+    <a href="#" class="button"
+    onclick="addToCart('Jane Austen\'s Bookshelf','Rebecca Romney','2236')">
+    🛒 Add to cart
+    </a>
+</div>
+
+<div class="newbook">
+    <img src="https://m.media-amazon.com/images/I/91nrHWvnpsL._AC_UF1000,1000_QL80_.jpg">
+    <h3>This Book Will Bury Me</h3>
+    <p>Author: Ashley Winstead</p>
+    <h3>₹659.00</h3>
+
+    <a href="#" class="button"
+    onclick="addToCart('This Book Will Bury Me','Ashley Winstead','659')">
+    🛒 Add to cart
+    </a>
+</div>
+
+<div class="newbook">
+    <img src="https://mpd-biblio-covers.imgix.net/9781250336644.jpg">
+    <h3>The Good Mother Myth</h3>
+    <p>Author: Nancy Reddy</p>
+    <h3>₹134.00</h3>
+
+    <a href="#" class="button"
+    onclick="addToCart('The Good Mother Myth','Nancy Reddy','134')">
+    🛒 Add to cart
+    </a>
+</div>
+
+<div class="newbook">
+    <img src="https://m.media-amazon.com/images/I/813Gac0zUjL._AC_UF1000,1000_QL80_.jpg">
+    <h3>Witch's Guide To Magical Innkeeping</h3>
+    <p>Author: Sangu Mandanna</p>
+    <h3>₹1055.00</h3>
+
+    <a href="#" class="button"
+    onclick="addToCart('Witchs Guide To Magical Innkeeping','Sangu Mandanna','1055')">
+    🛒 Add to cart
+    </a>
+</div>
+<footer class="footer">
+
+  <div class="footer-top">
+
+    <!-- LOGO -->
+    <div class="footer-logo-box">
+      <img src="logo.png" class="footer-logo">
+    </div>
+
+    <!-- ABOUT -->
+    <div class="footer-about">
+      <h2>About NovelNest</h2>
+      <p>
+        NovelNest is your cozy online bookstore where every reader finds a world to explore.
+        From fiction to self-growth, we bring books that inspire imagination, knowledge, and joy.
+      </p>
+    </div>
+
+    <!-- RIGHT SIDE LINKS -->
+    <div class="footer-right">
+
+      <div class="footer-links">
+        <h3>Genres</h3>
+        <a href="NovelNest1.html">Fiction</a>
+        <a href="NovelNest2.html">Non-Fiction</a>
+        <a href="NovelNest4.html">Love</a>
+        <a href="NovelNest6.html">Poetry</a>
+        <a href="NovelNest7.html">Biography</a>
+        <a href="NovelNest3.html">Psychology</a>
+        <a href="NovelNest5.html">Health</a>
+      </div>
+
+      <div class="footer-links">
+        <h3>Account</h3>
+        <a href="signin.html">Sign In</a>
+        <a href="signup.html">Sign Up</a>
+        <a href="add to cart.html">Cart</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- SOCIAL -->
+  <div class="footer-social">
+    <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png"></a>
+    <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"></a>
+    <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png"></a>
+    <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"></a>
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    <div>© NovelNest Copyright | All Rights Reserved</div>
+    <div>Privacy | Terms | Cookie Policy | Sitemap</div>
+    <div>Rated Excellent ⭐⭐⭐⭐☆</div>
+  </div>
+
+</footer>
+<script>
+function addToCart(name, author, price) {
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.push({
+        name: name,
+        author: author,
+        price: price
+    });
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert("Book added to cart! 🛒");
+}
+</script>
+</html>

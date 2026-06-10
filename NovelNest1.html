@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Fiction</title>
+</head>
+<style>
+
+.logo img{
+     width:190px;
+     height:45px;
+     transition:0.3s ease;
+}
+
+.logo img:hover{
+     opacity:0.8;
+     transform:translateY(-2px);
+}
+
+nav {
+    background-color: #ff9999;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;  /* 🔥 change this */
+    padding: 0 10px;              /* reduced padding */
+    gap: 30px;                    /* controls spacing */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    gap: 10px;   /* 🔥 replaces big spacing */
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    transition:0.3s ease;
+}
+
+nav ul li a:hover{
+    color:white;
+    transform:translateY(-2px);
+}
+
+.name{
+    transition:0.3s ease;
+}
+
+.name:hover{
+    color:white;
+}
+.search-box {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-left: 5px;
+}
+
+.search-box input {
+    width: 180px;
+    padding: 6px 10px;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    background: white;
+    font-size: 13px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.search-icon {
+    margin-left: -25px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* suggestions dropdown */
+
+.suggestions {
+    position: absolute;
+    top: 40px;
+    background: white;
+    width: 220px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    display: none;
+    z-index: 1000;
+}
+
+.suggestions div {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.suggestions div:hover {
+    background: #ffdddd;
+}
+
+/* cart */
+.cart-img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+.new img{
+    float: left;
+    border: 2px;
+    margin: 3px;
+    width: 280px;
+    height: 350px;
+    transition:0.3s ease;
+}
+
+.new img:hover{
+    transform:scale(1.03);
+    opacity:0.95;
+}
+
+.newbook{
+    display: inline-block;
+    text-align:center;
+    box-shadow: 0 5px 15px rgba(5, 5, 5, 0.2);
+    margin:2px;
+    transition:0.3s ease;
+}
+
+.newbook:hover{
+    transform:translateY(-8px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+.button{
+    padding:10px;
+    background-color:black;
+    color:white;
+    font-size:18px;
+    text-decoration:none;
+    transition:0.3s ease;
+}
+
+.button:hover{
+    background-color:#e45858;
+    color:white;
+    transform:translateY(-3px);
+    box-shadow:0 5px 12px rgba(0,0,0,0.2);
+}
+
+.newbook .button{
+    display: inline-block;
+    margin-top: 12px;
+}
+
+.newbook h3,
+.newbook p{
+    margin: 5px 0;
+}
+#toast{
+    position: fixed;
+    top: 20px;
+    right: -300px;
+    background: white;
+    color: black;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: 0.4s ease;
+    font-weight: bold;
+    z-index: 9999;
+}
+
+#toast.show{
+    right: 20px;
+}
+.footer{
+    background-color:#ff9999;
+    transition:0.3s ease;
+}
+
+.footer:hover{
+    background-color:#ff8f8f;
+}
+.cart-img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    transition: 0.3s ease;
+}
+
+.cart-img:hover {
+    transform: translateY(-2px);
+    opacity: 0.8;
+}
+.right-nav {
+    display: flex;
+    align-items: center;
+}
+
+.right-nav ul {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.cart-img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    display: block;
+}
+.profile-img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    transition: 0.3s ease;
+
+    /* blend with navbar */
+    background: transparent;
+    padding: 2px;
+    border-radius: 50%;
+}
+
+.profile-img:hover {
+    transform: translateY(-2px);
+    opacity: 0.8;
+}
+.footer{
+    background:#ff9999;
+    padding:15px 20px 0px;
+    color:black;
+    height: auto;
+    margin-top: 0;
+}
+.footer{
+    height:auto;      
+    margin-top:40px;
+}
+
+.footer-social{
+    margin:5px 0;
+}
+
+.footer-bottom{
+    padding-top:8px;
+    padding-bottom: 8px;
+}
+
+.footer-right{
+    gap:80px;
+}
+
+.footer-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:Center;
+    justify-content:flex-start;
+    gap:30px;
+    margin-top: auto;
+}
+
+/* LOGO */
+.footer-logo{
+    height:70px;
+    width:auto;
+    object-fit:contain;
+}
+
+/* ABOUT CENTER */
+.footer-about{
+    flex:0.9;
+    text-align:center;
+}
+
+.footer-about h2{
+    font-size:35px;
+    margin-bottom:3px;
+}
+
+.footer-about p{
+    font-size:18px;
+    line-height:1.5;
+    max-width:500px;
+    margin:auto;
+}
+
+/* RIGHT SIDE */
+.footer-right{
+    display:flex;
+    gap:150px;
+}
+
+.footer-links{
+    display:flex;
+    flex-direction:column;
+}
+
+.footer-links h3{
+    font-size:20px;
+    margin-bottom:5px;
+}
+
+.footer-links a{
+    text-decoration:none;
+    color:black;
+    font-size:18px;
+    margin:5px 0;
+    transition:0.3s ease;
+}
+
+.footer-links a:hover{
+    color:white;
+    transform:translateX(5px);
+}
+
+/* SOCIAL */
+.footer-social{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin:20px 0;
+}
+
+.footer-social img{
+    width:35px;
+    height:35px;
+    transition:0.3s ease;
+}
+
+.footer-social img:hover{
+    transform:scale(1.2);
+}
+
+/* BOTTOM */
+.footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    font-size:17px;
+    border-top:1px solid rgba(0,0,0,0.2);
+    padding-top:20px;
+}
+</style>
+<body>
+    <nav>
+
+  <div class="logo">
+    <img src="logo.png">
+  </div>
+
+  <!-- SEARCH BOX -->
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search books, categories...">
+    <span class="search-icon" onclick="searchCategory()">🔍</span>
+
+    <div id="suggestions" class="suggestions"></div>
+  </div>
+
+  <!-- NAV LINKS -->
+  <ul>
+    <li><a href="NovelNest.html"><h3 class="name">Home</h3></a></li>
+    <li><a href="NovelNest1.html"><h3 class="name">Fiction</h3></a></li>
+    <li><a href="NovelNest2.html"><h3 class="name">Non-Fiction</h3></a></li>
+    <li><a href="NovelNest4.html"><h3 class="name">Love</h3></a></li>
+    <li><a href="NovelNest6.html"><h3 class="name">Poetry</h3></a></li>
+    <li><a href="NovelNest7.html"><h3 class="name">Biography</h3></a></li>
+    <li><a href="NovelNest3.html"><h3 class="name">Psychology</h3></a></li>
+    <li><a href="NovelNest5.html"><h3 class="name">Health</h3></a></li>
+  </ul>
+
+  <!-- RIGHT SIDE -->
+  <div class="right-nav">
+    <ul>
+    <li>
+  <a href="signin.html">
+    <img src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" class="profile-img">
+  </a>
+</li>
+      <li>
+        <a href="add to cart.html">
+          <img src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png" class="cart-img">
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</nav>
+	<div class="new">
+    <h1><center>FICTION</center></h1>
+    <div class="new">
+
+<div class="newbook">
+    <img src="https://m.media-amazon.com/images/I/81xtUuRY3ML._AC_UF1000,1000_QL80_.jpg">
+    <h3>A Court of Thorns and Roses</h3>
+    <p>Author: Sarah J. Maas</p>
+    <h3>₹1439.10</h3>
+
+    <a href="#" class="button"
+    onclick="addToCart('A Court of Thorns and Roses','Sarah J Maas','1439.10')">
+    🛒 Add to cart
+    </a>
+</div>
+
+<div class="newbook">
+    <img src="https://m.media-amazon.com/images/I/818V3WBqXJL._UF1000,1000_QL80_.jpg">
+    <h3>A Curse for True Love</h3>
+    <p>Author: Stephanie Garber</p>
+    <h3>₹206.10</h3>
+
+    <a href="#" class="button"
+    onclick="addToCart('A Curse for True Love','Stephanie Garber','206.10')">
+    🛒 Add to cart
+    </a>
+</div>
+
+<div class="newbook">
+    <img src="https://m.media-amazon.com/images/I/91zp-pH5t4L._UF1000,1000_QL80_.jpg">
+    <h3>A Kingdom of Flesh and Fire</h3>
+    <p>Author: Jennifer L. Armentrout</p>
+    <h3>₹269.10</h3>
+
+    <a href="#" class="button"
+    onclick="addToCart('A Kingdom of Flesh and Fire','Jennifer L Armentrout','269.10')">
+    🛒 Add to cart
+    </a>
+</div>
+
+<div class="newbook">
+    <img src="https://m.media-amazon.com/images/I/71ZQbdoLeoL.jpg">
+    <h3>After the Quake</h3>
+    <p>Author: Haruki Murakami</p>
+    <h3>₹162.00</h3>
+
+    <a href="#" class="button"
+    onclick="addToCart('After the Quake','Haruki Murakami','162.00')">
+    🛒 Add to cart
+    </a>
+</div>
+
+<div class="newbook">
+    <img src="https://m.media-amazon.com/images/I/81d9Hg9gLyL._UF1000,1000_QL80_.jpg">
+    <h3>All This Twisted Glory</h3>
+    <p>Author: Tahereh Mafi</p>
+    <h3>₹264.00</h3>
+
+    <a href="#" class="button"
+    onclick="addToCart('All This Twisted Glory','Tahereh Mafi','264.00')">
+    🛒 Add to cart
+    </a>
+</div>
+
+<div class="newbook">
+    <img src="https://m.media-amazon.com/images/I/81ko+wSOm-L._AC_UF1000,1000_QL80_.jpg">
+    <h3>Babel</h3>
+    <p>Author: R.F. Kuang</p>
+    <h3>₹264.00</h3>
+
+    <a href="#" class="button"
+    onclick="addToCart('Babel','R F Kuang','264.00')">
+    🛒 Add to cart
+    </a>
+</div>
+
+<div class="newbook">
+    <img src="https://m.media-amazon.com/images/I/81XuBDUvMaL._AC_UF1000,1000_QL80_.jpg">
+    <h3>Before the Coffee Gets Cold</h3>
+    <p>Author: Toshikazu Kawaguchi</p>
+    <h3>₹179.10</h3>
+
+    <a href="#" class="button"
+    onclick="addToCart('Before the Coffee Gets Cold','Toshikazu Kawaguchi','179.10')">
+    🛒 Add to cart
+    </a>
+</div>
+
+<div class="newbook">
+    <img src="https://m.media-amazon.com/images/I/71NHq2-S-7L._AC_UF1000,1000_QL80_.jpg">
+    <h3>Everless</h3>
+    <p>Author: Sara Holland</p>
+    <h3>₹125.10</h3>
+
+    <a href="#" class="button"
+    onclick="addToCart('Everless','Sara Holland','125.10')">
+    🛒 Add to cart
+    </a>
+</div>
+
+<div class="newbook">
+    <img src="https://m.media-amazon.com/images/I/817Xh+bqwOL._AC_UF350,350_QL50_.jpg">
+    <h3>Dune</h3>
+    <p>Author: Frank Herbert</p>
+    <h3>₹224.10</h3>
+
+    <a href="#" class="button"
+    onclick="addToCart('Dune','Frank Herbert','224.10')">
+    🛒 Add to cart
+    </a>
+</div>
+
+<div class="newbook">
+    <img src="https://m.media-amazon.com/images/I/81iGm8PTCUL.jpg">
+    <h3>Before Your Memory Fades</h3>
+    <p>Author: Toshikazu Kawaguchi</p>
+    <h3>₹170.10</h3>
+
+    <a href="#" class="button"
+    onclick="addToCart('Before Your Memory Fades','Toshikazu Kawaguchi','170.10')">
+    🛒 Add to cart
+    </a>
+</div>
+<div class="newbook">
+    <img src="https://m.media-amazon.com/images/I/91xBRNN9AuL._AC_UF1000,1000_QL80_.jpg">
+    <h3>Fourth Wing</h3>
+    <p>Author: Rebecca Yerros</p>
+    <h3>₹377.10</h3>
+
+    <a href="#" class="button"
+    onclick="addToCart('Fourth Wing','Rebecca Yerros','377.10')">
+    🛒 Add to cart
+    </a>
+</div>
+<div class="newbook">
+    <img src="https://m.media-amazon.com/images/I/81A-LrD-RSL._UF1000,1000_QL80_.jpg">
+    <h3>From Blood and Ash</h3>
+    <p>Author: jennifer L. Armentrout</p>
+    <h3>₹269.10</h3>
+
+    <a href="#" class="button"
+    onclick="addToCart('From Blood and Ash','jennifer L. Armentrout','269.10')">
+    🛒 Add to cart
+    </a>
+</div>
+<div class="newbook">
+    <img src="https://m.media-amazon.com/images/I/51dOacmuzvL._SY445_SX342_FMwebp_.jpg">
+    <h3>Harry Potter</h3>
+    <p>Author: J.K Rowling</p>
+    <h3>₹1799.00</h3>
+
+    <a href="#" class="button"
+    onclick="addToCart('Harry Potter','J.K Rowling','1799.00')">
+    🛒 Add to cart
+    </a>
+</div>
+<div class="newbook">
+    <img src="https://m.media-amazon.com/images/I/81P8Md4zmDL._AC_UF1000,1000_QL80_.jpg">
+    <h3>House of Sky and Breath</h3>
+    <p>Author: Sarah J.Mass</p>
+    <h3>₹359.00</h3>
+
+    <a href="#" class="button"
+    onclick="addToCart('House of Sky and Breath','Sarah J.Mass','359.00')">
+    🛒 Add to cart
+    </a>
+</div>
+<div class="newbook">
+    <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1375972497i/13188676.jpg">
+    <h3>Ignite Me</h3>
+    <p>Author: Tahereh Mafi</p>
+    <h3>₹215.10</h3>
+
+    <a href="#" class="button"
+    onclick="addToCart('Ignite Me','Tahereh Mafi','215.10')">
+    🛒 Add to cart
+    </a>
+</div>
+<div class="newbook">
+    <img src="https://www.delhibookmarket.com/_next/image?url=https%3A%2F%2Fshop.delhibookmarket.com%2Fwp-content%2Fuploads%2F2024%2F01%2FLegendary-1.jpg&w=640&q=75">
+    <h3>Legendary</h3>
+    <p>Author: Stephanie Garber</p>
+    <h3>₹260.10</h3>
+
+    <a href="#" class="button"
+    onclick="addToCart('Legendary','Stephanie Garber','260.10')">
+    🛒 Add to cart
+    </a>
+</div>
+<div class="newbook">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQVwwFXcuI8F4nJiPnSRd9l7WqmShgjIH24w&s">
+    <h3>percey Jackson</h3>
+    <p>Author: Rick Riordan</p>
+    <h3>₹746.10</h3>
+
+    <a href="#" class="button"
+    onclick="addToCart('percey Jackson','Rick Riordan','746.10')">
+    🛒 Add to cart
+    </a>
+</div>
+<div class="newbook">
+    <img src="https://m.media-amazon.com/images/I/91ay4wXGKsL._SY466_.jpg">
+    <h3>Ram Scion of Ikshvaku</h3>
+    <p>Author: Amish Tripathi</p>
+    <h3>₹171.10</h3>
+
+    <a href="#" class="button"
+    onclick="addToCart('Ram Scion of Ikshvaku','Amish Tripathi','171.10')">
+    🛒 Add to cart
+    </a>
+</div>
+<div class="newbook">
+    <img src="https://m.media-amazon.com/images/I/913MlIBrvSL.jpg">
+    <h3>Run and Rising</h3>
+    <p>Author: Leigh Bardugo</p>
+    <h3>₹171.00</h3>
+
+    <a href="#" class="button"
+    onclick="addToCart('Run and Rising','Leigh Bardugo','171.00')">
+    🛒 Add to cart
+    </a>
+</div>
+<div class="newbook">
+    <img src="https://m.media-amazon.com/images/I/81zIblguagL._AC_UF1000,1000_QL80_.jpg">
+    <h3>Sisters of sword and Song</h3>
+    <p>Author: Rebecca Ross</p>
+    <h3>₹232.00</h3>
+
+    <a href="#" class="button"
+    onclick="addToCart('Sisters of sword and Song','Rebecca Ross','232.00')">
+    🛒 Add to cart
+    </a>
+</div>
+
+</div>
+<footer class="footer">
+
+  <div class="footer-top">
+
+    <!-- LOGO -->
+    <div class="footer-logo-box">
+      <img src="logo.png" class="footer-logo">
+    </div>
+
+    <!-- ABOUT -->
+    <div class="footer-about">
+      <h2>About NovelNest</h2>
+      <p>
+        NovelNest is your cozy online bookstore where every reader finds a world to explore.
+        From fiction to self-growth, we bring books that inspire imagination, knowledge, and joy.
+      </p>
+    </div>
+
+    <!-- RIGHT SIDE LINKS -->
+    <div class="footer-right">
+
+      <div class="footer-links">
+        <h3>Genres</h3>
+        <a href="NovelNest1.html">Fiction</a>
+        <a href="NovelNest2.html">Non-Fiction</a>
+        <a href="NovelNest4.html">Love</a>
+        <a href="NovelNest6.html">Poetry</a>
+        <a href="NovelNest7.html">Biography</a>
+        <a href="NovelNest3.html">Psychology</a>
+        <a href="NovelNest5.html">Health</a>
+      </div>
+
+      <div class="footer-links">
+        <h3>Account</h3>
+        <a href="signin.html">Sign In</a>
+        <a href="signup.html">Sign Up</a>
+        <a href="add to cart.html">Cart</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- SOCIAL -->
+  <div class="footer-social">
+    <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png"></a>
+    <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"></a>
+    <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png"></a>
+    <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"></a>
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    <div>© NovelNest Copyright | All Rights Reserved</div>
+    <div>Privacy | Terms | Cookie Policy | Sitemap</div>
+    <div>Rated Excellent ⭐⭐⭐⭐☆</div>
+  </div>
+
+</footer>
+</body>
+<script>
+function addToCart(name, author, price) {
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.push({
+        name: name,
+        author: author,
+        price: price
+    });
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert("Book added to cart! 🛒");
+}
+const categories = {
+    "fiction": {
+        keywords: ["fiction", "fantasy", "sci-fi", "science fiction", "novel"],
+        page: "NovelNest1.html"
+    },
+    "non-fiction": {
+        keywords: ["non fiction", "non-fiction", "history", "real", "biography"],
+        page: "NovelNest2.html"
+    },
+    "love": {
+        keywords: ["love", "romance", "romantic"],
+        page: "NovelNest4.html"
+    },
+    "poetry": {
+        keywords: ["poetry", "poems"],
+        page: "NovelNest6.html"
+    },
+    "biography": {
+        keywords: ["biography", "autobiography"],
+        page: "NovelNest7.html"
+    },
+    "psychology": {
+        keywords: ["psychology", "mind", "behavior"],
+        page: "NovelNest3.html"
+    },
+    "health": {
+        keywords: ["health", "fitness", "wellness"],
+        page: "NovelNest5.html"
+    }
+};
+
+window.addEventListener("DOMContentLoaded", function () {
+
+    const suggestionBox = document.getElementById("suggestions");
+    const input = document.getElementById("searchInput");
+
+    input.addEventListener("input", function () {
+
+        let value = input.value.toLowerCase().trim();
+        suggestionBox.innerHTML = "";
+
+        if (value === "") {
+            suggestionBox.style.display = "none";
+            return;
+        }
+
+        let found = false;
+
+        for (let key in categories) {
+
+            let match = categories[key].keywords.some(word =>
+                word.toLowerCase().includes(value)
+            );
+
+            if (match) {
+                let div = document.createElement("div");
+                div.innerText = key.charAt(0).toUpperCase() + key.slice(1);
+
+                div.onclick = function () {
+                    window.location.href = categories[key].page;
+                };
+
+                suggestionBox.appendChild(div);
+                found = true;
+            }
+        }
+
+        if (!found) {
+            let div = document.createElement("div");
+            div.innerText = "No Results Found";
+            suggestionBox.appendChild(div);
+        }
+
+        suggestionBox.style.display = "block";
+    });
+
+});
+
+function searchCategory() {
+
+    let value = document.getElementById("searchInput").value.toLowerCase().trim();
+
+    for (let key in categories) {
+
+        let match = categories[key].keywords.some(word =>
+            word.toLowerCase().includes(value)
+        );
+
+        if (match) {
+            window.location.href = categories[key].page;
+            return;
+        }
+    }
+
+    alert("No Results Found");
+}
+</script>
+</html>

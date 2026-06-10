@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Biography</title>
+
+<style>
+
+.logo img{
+     width:190px;
+     height:45px;
+     transition:0.3s ease;
+}
+
+.logo img:hover{
+     opacity:0.8;
+     transform:translateY(-2px);
+}
+
+nav {
+    background-color: #ff9999;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;  /* 🔥 change this */
+    padding: 0 10px;              /* reduced padding */
+    gap: 30px;                    /* controls spacing */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    gap: 10px;   /* 🔥 replaces big spacing */
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    transition:0.3s ease;
+}
+
+nav ul li a:hover{
+    color:white;
+    transform:translateY(-2px);
+}
+
+.name{
+    transition:0.3s ease;
+}
+
+.name:hover{
+    color:white;
+}
+.search-box {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-left: 5px;
+}
+
+.search-box input {
+    width: 180px;
+    padding: 6px 10px;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    background: white;
+    font-size: 13px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.search-icon {
+    margin-left: -25px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* suggestions dropdown */
+
+.suggestions {
+    position: absolute;
+    top: 40px;
+    background: white;
+    width: 220px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    display: none;
+    z-index: 1000;
+}
+
+.suggestions div {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.suggestions div:hover {
+    background: #ffdddd;
+}
+
+/* cart */
+.cart-img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+.new img{
+    float: left;
+    border: 2px;
+    margin: 3px;
+    width: 280px;
+    height: 350px;
+    transition:0.3s ease;
+}
+
+.new img:hover{
+    transform:scale(1.03);
+    opacity:0.95;
+}
+
+.newbook{
+    display: inline-block;
+    text-align:center;
+    box-shadow: 0 5px 15px rgba(5, 5, 5, 0.2);
+    margin:2px;
+    transition:0.3s ease;
+}
+
+.newbook:hover{
+    transform:translateY(-8px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+.button{
+    padding:10px;
+    background-color:black;
+    color:white;
+    font-size:18px;
+    text-decoration:none;
+    transition:0.3s ease;
+}
+
+.button:hover{
+    background-color:#e45858;
+    color:white;
+    transform:translateY(-3px);
+    box-shadow:0 5px 12px rgba(0,0,0,0.2);
+}
+.newbook .button{
+    display: inline-block;
+    margin-top: 12px;
+}
+
+.newbook h3,
+.newbook p{
+    margin: 5px 0;
+}
+#toast{
+    position: fixed;
+    top: 20px;
+    right: -300px;
+    background: white;
+    color: black;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: 0.4s ease;
+    font-weight: bold;
+    z-index: 9999;
+}
+
+#toast.show{
+    right: 20px;
+}
+.footer{
+    background-color:#ff9999;
+    transition:0.3s ease;
+}
+.footer{
+    background-color:#ff9999;
+    transition:0.3s ease;
+}
+
+.footer:hover{
+    background-color:#ff8f8f;
+}
+.cart-img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    transition: 0.3s ease;
+}
+
+.cart-img:hover {
+    transform: translateY(-2px);
+    opacity: 0.8;
+}
+.right-nav {
+    display: flex;
+    align-items: center;
+}
+
+.right-nav ul {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.cart-img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    display: block;
+}
+.profile-img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    transition: 0.3s ease;
+
+    /* blend with navbar */
+    background: transparent;
+    padding: 2px;
+    border-radius: 50%;
+}
+
+.profile-img:hover {
+    transform: translateY(-2px);
+    opacity: 0.8;
+}
+.footer{
+    background:#ff9999;
+    padding:15px 20px 0px;
+    color:black;
+    height: auto;
+    margin-top: 0;
+}
+.footer{
+    height:auto;      
+    margin-top:40px;
+}
+
+.footer-social{
+    margin:5px 0;
+}
+
+.footer-bottom{
+    padding-top:8px;
+    padding-bottom: 8px;
+}
+
+.footer-right{
+    gap:80px;
+}
+
+.footer-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:Center;
+    justify-content:flex-start;
+    gap:30px;
+    margin-top: auto;
+}
+
+/* LOGO */
+.footer-logo{
+    height:70px;
+    width:auto;
+    object-fit:contain;
+}
+
+/* ABOUT CENTER */
+.footer-about{
+    flex:0.9;
+    text-align:center;
+}
+
+.footer-about h2{
+    font-size:35px;
+    margin-bottom:3px;
+}
+
+.footer-about p{
+    font-size:18px;
+    line-height:1.5;
+    max-width:500px;
+    margin:auto;
+}
+
+/* RIGHT SIDE */
+.footer-right{
+    display:flex;
+    gap:150px;
+}
+
+.footer-links{
+    display:flex;
+    flex-direction:column;
+}
+
+.footer-links h3{
+    font-size:20px;
+    margin-bottom:5px;
+}
+
+.footer-links a{
+    text-decoration:none;
+    color:black;
+    font-size:18px;
+    margin:5px 0;
+    transition:0.3s ease;
+}
+
+.footer-links a:hover{
+    color:white;
+    transform:translateX(5px);
+}
+
+/* SOCIAL */
+.footer-social{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin:20px 0;
+}
+
+.footer-social img{
+    width:35px;
+    height:35px;
+    transition:0.3s ease;
+}
+
+.footer-social img:hover{
+    transform:scale(1.2);
+}
+
+/* BOTTOM */
+.footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    font-size:17px;
+    border-top:1px solid rgba(0,0,0,0.2);
+    padding-top:20px;
+}
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+  <div class="logo">
+    <img src="logo.png">
+  </div>
+
+  <!-- SEARCH BOX -->
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search books, categories...">
+    <span class="search-icon" onclick="searchCategory()">🔍</span>
+
+    <div id="suggestions" class="suggestions"></div>
+  </div>
+
+  <!-- NAV LINKS -->
+  <ul>
+    <li><a href="NovelNest.html"><h3 class="name">Home</h3></a></li>
+    <li><a href="NovelNest1.html"><h3 class="name">Fiction</h3></a></li>
+    <li><a href="NovelNest2.html"><h3 class="name">Non-Fiction</h3></a></li>
+    <li><a href="NovelNest4.html"><h3 class="name">Love</h3></a></li>
+    <li><a href="NovelNest6.html"><h3 class="name">Poetry</h3></a></li>
+    <li><a href="NovelNest7.html"><h3 class="name">Biography</h3></a></li>
+    <li><a href="NovelNest3.html"><h3 class="name">Psychology</h3></a></li>
+    <li><a href="NovelNest5.html"><h3 class="name">Health</h3></a></li>
+  </ul>
+
+  <!-- RIGHT SIDE -->
+  <div class="right-nav">
+    <ul>
+    <li>
+  <a href="signin.html">
+    <img src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" class="profile-img">
+  </a>
+</li>
+      <li>
+        <a href="add to cart.html">
+          <img src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png" class="cart-img">
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</nav>
+
+<div class="new">
+<h1><center>BIOGRAPHY</center></h1>
+
+<!-- 1 -->
+<div class="newbook">
+<img src="https://m.media-amazon.com/images/I/91+NBrXG-PL.jpg">
+<h3>A Promised Land</h3>
+<p>Author: Barrak Obama</p>
+<h3>₹405.00</h3>
+<a href="#" class="button" onclick="addToCart('A Promised Land','Barrak Obama','405')">🛒 Add to cart</a>
+</div>
+
+<!-- 2 -->
+<div class="newbook">
+<img src="https://booksandyou.in/cdn/shop/files/AutobiographyofaYogi_1.webp?v=1704432088">
+<h3>Autobiography of a Yogi</h3>
+<p>Author: Paramahamsa Yogananda</p>
+<h3>₹179.10</h3>
+<a href="#" class="button" onclick="addToCart('Autobiography of a Yogi','Paramahamsa Yogananda','179.10')">🛒 Add to cart</a>
+</div>
+
+<!-- 3 -->
+<div class="newbook">
+<img src="https://m.media-amazon.com/images/I/61SGSxikRUL._AC_UF1000,1000_QL80_.jpg">
+<h3>Bad Blood</h3>
+<p>Author: John Carreyrou</p>
+<h3>₹171.00</h3>
+<a href="#" class="button" onclick="addToCart('Bad Blood','John Carreyrou','171')">🛒 Add to cart</a>
+</div>
+
+<!-- 4 -->
+<div class="newbook">
+<img src="https://m.media-amazon.com/images/I/61KdYQdSqqL._AC_UF1000,1000_QL80_.jpg">
+<h3>Batting Injustice</h3>
+<p>Author: Supriya Vani</p>
+<h3>₹171.00</h3>
+<a href="#" class="button" onclick="addToCart('Batting Injustice','Supriya Vani','171')">🛒 Add to cart</a>
+</div>
+
+<!-- 5 -->
+<div class="newbook">
+<img src="https://m.media-amazon.com/images/I/81KGjsBXQ7L._AC_UF1000,1000_QL80_.jpg">
+<h3>Becoming</h3>
+<p>Author: Michelle Obama</p>
+<h3>₹180.00</h3>
+<a href="#" class="button" onclick="addToCart('Becoming','Michelle Obama','180')">🛒 Add to cart</a>
+</div>
+
+<!-- 6 -->
+<div class="newbook">
+<img src="https://m.media-amazon.com/images/I/81jXsZ45WAL.jpg">
+<h3>Born a Crime</h3>
+<p>Author: Trevor Noah</p>
+<h3>₹171.00</h3>
+<a href="#" class="button" onclick="addToCart('Born a Crime','Trevor Noah','171')">🛒 Add to cart</a>
+</div>
+
+<!-- 7 -->
+<div class="newbook">
+<img src="https://m.media-amazon.com/images/I/71E8sYS9j4L._AC_UF1000,1000_QL80_.jpg">
+<h3>Brief Answers to Big Questions</h3>
+<p>Author: Stephen Hawking</p>
+<h3>₹171.10</h3>
+<a href="#" class="button" onclick="addToCart('Brief Answers','Stephen Hawking','171.10')">🛒 Add to cart</a>
+</div>
+
+<!-- 8 -->
+<div class="newbook">
+<img src="https://m.media-amazon.com/images/I/81gTRv2HXrL._UF350,350_QL50_.jpg">
+<h3>Can't Hurt Me</h3>
+<p>Author: David Goggins</p>
+<h3>₹199.10</h3>
+<a href="#" class="button" onclick="addToCart('Cant Hurt Me','David Goggins','199.10')">🛒 Add to cart</a>
+</div>
+
+<!-- 9 -->
+<div class="newbook">
+<img src="https://cdn.exoticindia.com/images/products/original/books-2019-013/nav050.jpg">
+<h3>Swami Vivekananda</h3>
+<p>Author: Swami Vivekananda</p>
+<h3>₹179.10</h3>
+<a href="#" class="button" onclick="addToCart('Swami Vivekananda','Swami Vivekananda','179.10')">🛒 Add to cart</a>
+</div>
+
+<!-- 10 -->
+<div class="newbook">
+<img src="https://m.media-amazon.com/images/I/71N+AVRt3XL._UF1000,1000_QL80_.jpg">
+<h3>Doglapan</h3>
+<p>Author: Ashneer Grover</p>
+<h3>₹179.10</h3>
+<a href="#" class="button" onclick="addToCart('Doglapan','Ashneer Grover','179.10')">🛒 Add to cart</a>
+</div>
+
+<!-- 11 -->
+<div class="newbook">
+<img src="https://m.media-amazon.com/images/I/71-4MkLN5jL._AC_UF1000,1000_QL80_.jpg">
+<h3>Educated</h3>
+<p>Author: Tara Westover</p>
+<h3>₹449.10</h3>
+<a href="#" class="button" onclick="addToCart('Educated','Tara Westover','449.10')">🛒 Add to cart</a>
+</div>
+
+<!-- 12 -->
+<div class="newbook">
+<img src="https://m.media-amazon.com/images/I/81Kaj5++6pL.jpg">
+<h3>Elon Musk</h3>
+<p>Author: Walter Isaacson</p>
+<h3>₹345.10</h3>
+<a href="#" class="button" onclick="addToCart('Elon Musk','Walter Isaacson','345.10')">🛒 Add to cart</a>
+</div>
+
+<!-- 13 -->
+<div class="newbook">
+<img src="https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781471181320/fear-9781471181320_lg.jpg">
+<h3>Fear</h3>
+<p>Author: Bob Woodward</p>
+<h3>₹125.00</h3>
+<a href="#" class="button" onclick="addToCart('Fear','Bob Woodward','125')">🛒 Add to cart</a>
+</div>
+
+<!-- 14 -->
+<div class="newbook">
+<img src="https://m.media-amazon.com/images/I/81guEF2juUL._AC_UF1000,1000_QL80_.jpg">
+<h3>Friends Lovers</h3>
+<p>Author: Matthew Perry</p>
+<h3>₹224.10</h3>
+<a href="#" class="button" onclick="addToCart('Friends Lovers','Matthew Perry','224.10')">🛒 Add to cart</a>
+</div>
+
+<!-- 15 -->
+<div class="newbook">
+<img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1375414895i/17851885.jpg">
+<h3>I Am Malala</h3>
+<p>Author: Malala Yousafzai</p>
+<h3>₹299.10</h3>
+<a href="#" class="button" onclick="addToCart('I Am Malala','Malala Yousafzai','299.10')">🛒 Add to cart</a>
+</div>
+
+<!-- 16 -->
+<div class="newbook">
+<img src="https://m.media-amazon.com/images/I/61bwX6mpnmL._AC_UF1000,1000_QL80_.jpg">
+<h3>I Do What I Do</h3>
+<p>Author: Raghuram Rajan</p>
+<h3>₹188.10</h3>
+<a href="#" class="button" onclick="addToCart('I Do What I Do','Raghuram Rajan','188.10')">🛒 Add to cart</a>
+</div>
+
+<!-- 17 -->
+<div class="newbook">
+<img src="https://m.media-amazon.com/images/I/61MKQp0W85L.jpg">
+<h3>I Have Never Been Unhappier</h3>
+<p>Author: Shaheen Bhatt</p>
+<h3>₹143.00</h3>
+<a href="#" class="button" onclick="addToCart('I Have Never Been Unhappier','Shaheen Bhatt','143')">🛒 Add to cart</a>
+</div>
+
+<!-- 18 -->
+<div class="newbook">
+<img src="https://m.media-amazon.com/images/I/81lyD9mP4HL.jpg">
+<h3>Khullam Khulla</h3>
+<p>Author: Rishi Kapoor</p>
+<h3>₹144.00</h3>
+<a href="#" class="button" onclick="addToCart('Khullam Khulla','Rishi Kapoor','144')">🛒 Add to cart</a>
+</div>
+
+<!-- 19 -->
+<div class="newbook">
+<img src="https://m.media-amazon.com/images/I/71MIvbu-uEL._AC_UF1000,1000_QL80_.jpg">
+<h3>Dr Brian Weiss</h3>
+<p>Author: Brian Weiss</p>
+<h3>₹144.00</h3>
+<a href="#" class="button" onclick="addToCart('Dr Brian Weiss','Brian Weiss','144')">🛒 Add to cart</a>
+</div>
+
+<!-- 20 -->
+<div class="newbook">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxuZKkvnxb_w9y2mDxYbTSrKK4A9NBwradVg&s">
+<h3>Mein Kampf</h3>
+<p>Author: Adolf Hitler</p>
+<h3>₹193.00</h3>
+<a href="#" class="button" onclick="addToCart('Mein Kampf','Adolf Hitler','193')">🛒 Add to cart</a>
+</div>
+
+</div>
+
+<footer class="footer">
+
+  <div class="footer-top">
+
+    <!-- LOGO -->
+    <div class="footer-logo-box">
+      <img src="logo.png" class="footer-logo">
+    </div>
+
+    <!-- ABOUT -->
+    <div class="footer-about">
+      <h2>About NovelNest</h2>
+      <p>
+        NovelNest is your cozy online bookstore where every reader finds a world to explore.
+        From fiction to self-growth, we bring books that inspire imagination, knowledge, and joy.
+      </p>
+    </div>
+
+    <!-- RIGHT SIDE LINKS -->
+    <div class="footer-right">
+
+      <div class="footer-links">
+        <h3>Genres</h3>
+        <a href="NovelNest1.html">Fiction</a>
+        <a href="NovelNest2.html">Non-Fiction</a>
+        <a href="NovelNest4.html">Love</a>
+        <a href="NovelNest6.html">Poetry</a>
+        <a href="NovelNest7.html">Biography</a>
+        <a href="NovelNest3.html">Psychology</a>
+        <a href="NovelNest5.html">Health</a>
+      </div>
+
+      <div class="footer-links">
+        <h3>Account</h3>
+        <a href="signin.html">Sign In</a>
+        <a href="signup.html">Sign Up</a>
+        <a href="add to cart.html">Cart</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- SOCIAL -->
+  <div class="footer-social">
+    <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png"></a>
+    <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"></a>
+    <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png"></a>
+    <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"></a>
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="footer-bottom">
+    <div>© NovelNest Copyright | All Rights Reserved</div>
+    <div>Privacy | Terms | Cookie Policy | Sitemap</div>
+    <div>Rated Excellent ⭐⭐⭐⭐☆</div>
+  </div>
+
+</footer>
+
+<script>
+function addToCart(name, author, price) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.push({ name, author, price });
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert(name + " added to cart 🛒");
+}
+const categories = {
+    "fiction": {
+        keywords: ["fiction", "fantasy", "sci-fi", "science fiction", "novel"],
+        page: "NovelNest1.html"
+    },
+    "non-fiction": {
+        keywords: ["non fiction", "non-fiction", "history", "real", "biography"],
+        page: "NovelNest2.html"
+    },
+    "love": {
+        keywords: ["love", "romance", "romantic"],
+        page: "NovelNest4.html"
+    },
+    "poetry": {
+        keywords: ["poetry", "poems"],
+        page: "NovelNest6.html"
+    },
+    "biography": {
+        keywords: ["biography", "autobiography"],
+        page: "NovelNest7.html"
+    },
+    "psychology": {
+        keywords: ["psychology", "mind", "behavior"],
+        page: "NovelNest3.html"
+    },
+    "health": {
+        keywords: ["health", "fitness", "wellness"],
+        page: "NovelNest5.html"
+    }
+};
+
+window.addEventListener("DOMContentLoaded", function () {
+
+    const suggestionBox = document.getElementById("suggestions");
+    const input = document.getElementById("searchInput");
+
+    input.addEventListener("input", function () {
+
+        let value = input.value.toLowerCase().trim();
+        suggestionBox.innerHTML = "";
+
+        if (value === "") {
+            suggestionBox.style.display = "none";
+            return;
+        }
+
+        let found = false;
+
+        for (let key in categories) {
+
+            let match = categories[key].keywords.some(word =>
+                word.toLowerCase().includes(value)
+            );
+
+            if (match) {
+                let div = document.createElement("div");
+                div.innerText = key.charAt(0).toUpperCase() + key.slice(1);
+
+                div.onclick = function () {
+                    window.location.href = categories[key].page;
+                };
+
+                suggestionBox.appendChild(div);
+                found = true;
+            }
+        }
+
+        if (!found) {
+            let div = document.createElement("div");
+            div.innerText = "No Results Found";
+            suggestionBox.appendChild(div);
+        }
+
+        suggestionBox.style.display = "block";
+    });
+
+});
+
+function searchCategory() {
+
+    let value = document.getElementById("searchInput").value.toLowerCase().trim();
+
+    for (let key in categories) {
+
+        let match = categories[key].keywords.some(word =>
+            word.toLowerCase().includes(value)
+        );
+
+        if (match) {
+            window.location.href = categories[key].page;
+            return;
+        }
+    }
+
+    alert("No Results Found");
+}
+</script>
+
+</body>
+</html>

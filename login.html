@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      display: flex;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background-color: #333;
+      color: white;
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo img {
+      height: 50px;
+      width: 70px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      padding: 0;
+      margin: 0;
+      align-items: center;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 6px;
+    }
+
+    nav ul li a:hover {
+      background-color: white;
+      color: black;
+    }
+
+    .search-section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .search-section input {
+      padding: 7px 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+
+    .search-section button {
+      padding: 8px 14px;
+      background: white;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .main {
+      display: flex;
+      flex: 1;
+      margin-top: 90px; /* space for navbar */
+    }
+
+    .left, .right {
+      flex: 1;
+      padding: 40px;
+    }
+
+    .left {
+      background-color: #eaf5ed;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .left img {
+      max-width: 180px;
+      margin-bottom: 20px;
+    }
+
+    .left h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .left p {
+      max-width: 400px;
+      font-size: 15px;
+      color: #555;
+    }
+
+    .right {
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-box {
+      max-width: 350px;
+      width: 100%;
+    }
+
+    .form-box h3 {
+      text-align: right;
+      margin-bottom: 20px;
+    }
+
+    .social-login {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .social-login button {
+      flex: 1;
+      margin: 0 5px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .divider {
+      text-align: center;
+      margin: 15px 0;
+      color: #aaa;
+    }
+
+    input[type="email"], input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .checkbox-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .login-btn {
+      width: 100%;
+      background-color: #0b9444;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .signup-link {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .signup-link a {
+      color: #0b9444;
+      text-decoration: none;
+    }
+
+    .course-link {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 13px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <img src="logo1.jpeg" alt="Logo" />
+    </div>
+    <ul>
+      <li><a href="Wisdomwave_Home.html">Home</a></li>
+      <li><a href="TutorialsJava.html">Tutorials</a></li>
+      <li><a href="Quizzes.html">Quizzes</a></li>
+      <li><a href="Java.html">Java</a></li>
+      <li><a href="C.html">C</a></li>
+    </ul>
+    <div class="search-section">
+      <input type="text" placeholder="Search for Courses...">
+      <button>Search</button>
+    </div>
+    <ul>
+      <li><a href="Certification.html">Certification</a></li>
+      <li><a href="Plus.html">Plus</a></li>
+      <li><a href="Reviews.html">Reviews</a></li>
+      <li><a href="Contact.html">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <div class="main">
+    <div class="left">
+      <img src="https://cdn-icons-png.flaticon.com/512/167/167707.png" alt="School Icon" />
+      <h2>Welcome Back!</h2>
+      <p>Log in to continue learning with thousands of tutorials, quizzes and skill-based content – all for free.</p>
+    </div>
+
+    <div class="right">
+      <div class="form-box">
+        <h3><a href="#">Sign Up</a> | <strong>Log In</strong></h3>
+
+        <div class="social-login">
+          <button>🔵</button>
+          <button>🟦</button>
+          <button>🟥</button>
+          <button>🔗</button>
+        </div>
+
+        <div class="divider">OR</div>
+
+        <form>
+          <input type="email" placeholder="Email" required />
+          <input type="password" placeholder="Password" required />
+
+          <div class="checkbox-row">
+            <label><input type="checkbox" checked /> Keep me logged in</label>
+            <a href="#" style="color: #0b9444;">Forgot Password?</a>
+          </div>
+
+          <button type="submit" class="login-btn">Log In</button>
+        </form>
+
+        <div class="signup-link">
+          Don’t have an account? <a href="#">Sign Up</a>
+        </div>
+
+        <div class="course-link">
+          Are you a course creator? <a href="#">Click Here</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
