@@ -25,8 +25,6 @@ NovelNest is a front-end online bookstore website developed using HTML, CSS, and
 
 ## 🗂️ Project Structure
 
-## 🗂️ Project Structure
-
 ```text
 NovelNest
 │
