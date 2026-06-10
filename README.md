@@ -25,26 +25,35 @@ NovelNest is a front-end online bookstore website developed using HTML, CSS, and
 
 ## 🗂️ Project Structure
 
-NovelNest/
+## 🗂️ Project Structure
+
+```text
+NovelNest
 │
-├── NovelNest.html          # Home Page
-├── NovelNest1.html         # Fiction
-├── NovelNest2.html         # Non-Fiction
-├── NovelNest3.html         # Psychology
-├── NovelNest4.html         # Love
-├── NovelNest5.html         # Health & Wellness
-├── NovelNest6.html         # Poetry
-├── NovelNest7.html         # Biography
+├── NovelNest.html
+├── NovelNest1.html
+├── NovelNest2.html
+├── NovelNest3.html
+├── NovelNest4.html
+├── NovelNest5.html
+├── NovelNest6.html
+├── NovelNest7.html
 │
-├── signin.html             # Sign In Page
-├── sign up.html            # Sign Up Page
-├── add to cart.html        # Shopping Cart
+├── signin.html
+├── sign up.html
+├── add to cart.html
 │
-├── logo.png                # Website Logo
-├── *.png / *.jpg           # Category Images
+├── logo.png
+├── Fantasy.png
+├── Fiction.png
+├── Psychology.png
+├── Romance.png
+├── Health.png
+├── Poetry.png
+├── biography.jpg
 │
 └── README.md
-
+```
 ## 🛠️ Technologies Used
 
 - HTML5
